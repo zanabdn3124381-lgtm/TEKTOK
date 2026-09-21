@@ -1,3 +1,4 @@
 google-genai
 gtts
 moviepy
+requests
