@@ -1,7 +1,7 @@
 import os
 from google import genai
 from gtts import gTTS
-from moviepy.editor import AudioFileClip, ColorClip
+from moviepy import AudioFileClip, ColorClip
 import requests
 
 def generate_and_send_tiktok():
@@ -36,7 +36,7 @@ def generate_and_send_tiktok():
     
     # إنشاء خلفية ملونة للفيديو (مقاسات تيك توك: 1080x1920)
     bg_clip = ColorClip(size=(1080, 1920), color=(20, 20, 30), duration=duration)
-    video = bg_clip.set_audio(audio_clip)
+    video = bg_clip.with_audio(audio_clip)
     
     output_video = "tiktok_video.mp4"
     video.write_videofile(output_video, fps=24, codec='libx264', audio_codec='aac')
@@ -47,7 +47,7 @@ def generate_and_send_tiktok():
     bot_token = "8341287362:AAF0hO6PMtcP5O2Y-sF34OffcN_zeLbIKNo"
     chat_id = "-1003151787212"
     
-    # أولاً: إرسال النص (الفكرة والوصف)
+    # أولاً: إرسال النص
     text_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
     requests.post(text_url, data={"chat_id": chat_id, "text": f"🎬 فكرة فيديو تيك توك جديدة:\n\n{script_text}"})
     
