@@ -5,7 +5,7 @@ from moviepy import AudioFileClip, ColorClip
 import requests
 
 def generate_and_send_tiktok():
-    # 1. الاتصال بـ جوجل جميناي لتوليد النص
+    # 1. الاتصال بـ جوجل جميناي باستخدام مفتاحك الصحيح من الصورة
     client = genai.Client(api_key="AQ.Ab8RN6KISq_tZw1HxBD2QMYZ3KrBN...")
     
     prompt = """
