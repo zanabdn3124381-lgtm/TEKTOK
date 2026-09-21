@@ -1,12 +1,12 @@
 import os
-from google import genai
+import google.generativeai as genai
 from gtts import gTTS
 from moviepy import AudioFileClip, ColorClip
 import requests
 
 def generate_and_send_tiktok():
-    # 1. الاتصال بـ جوجل جميناي باستخدام مفتاحك الصحيح من الصورة
-    client = genai.Client(api_key="AQ.Ab8RN6KISq_tZw1HxBD2QMYZ3KrBN...")
+    # 1. إعداد المفتاح باستخدام الطريقة المتوافقة تماماً مع مفتاحك الظاهر في الصورة
+    genai.configure(api_key="AQ.Ab8RN6KISq_tZw1HxBD2QMYZ3KrBN...")
     
     prompt = """
     أنت صانع محتوى تيك توك محترف. اقترح علي فكرة فيديو قصيرة جداً (ترند حالياً)، واكتب:
@@ -14,10 +14,9 @@ def generate_and_send_tiktok():
     2. النص الذي سيتم قراءته في الفيديو (أقل من 30 كلمة، مشوق ومثير للفضول باللغة العربية).
     """
     
-    response = client.models.generate_content(
-        model='gemini-2.5-flash',
-        contents=prompt,
-    )
+    # استخدام النموذج المستقر
+    model = genai.GenerativeModel('gemini-1.5-flash')
+    response = model.generate_content(prompt)
     
     script_text = response.text
     print("--- تم توليد النص بنجاح ---")
