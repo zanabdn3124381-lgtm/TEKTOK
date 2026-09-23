@@ -1,6 +1,6 @@
 import os
 import random
-from gtts import gTTSتتت
+from gtts import gTTS
 from moviepy import AudioFileClip, ColorClip
 
 def run_tiktok_automation():
